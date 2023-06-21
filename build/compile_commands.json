@@ -1,7 +1,0 @@
-[
-{
-  "directory": "C:/Users/maxju/Desktop/epitech/my_test/build",
-  "command": "C:\\MinGW\\bin\\g++.exe   -g -std=gnu++1z -o CMakeFiles\\game.dir\\src\\Main.cpp.obj -c C:\\Users\\maxju\\Desktop\\epitech\\my_test\\src\\Main.cpp",
-  "file": "C:/Users/maxju/Desktop/epitech/my_test/src/Main.cpp"
-}
-]
