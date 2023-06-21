@@ -1,0 +1,5 @@
+C:/Users/maxju/Desktop/epitech/my_test/build/CMakeFiles/game.dir
+C:/Users/maxju/Desktop/epitech/my_test/build/CMakeFiles/package.dir
+C:/Users/maxju/Desktop/epitech/my_test/build/CMakeFiles/package_source.dir
+C:/Users/maxju/Desktop/epitech/my_test/build/CMakeFiles/edit_cache.dir
+C:/Users/maxju/Desktop/epitech/my_test/build/CMakeFiles/rebuild_cache.dir
