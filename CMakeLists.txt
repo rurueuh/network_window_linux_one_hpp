@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(game VERSION 0.1.0)
+project(network VERSION 0.1.0)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static")
@@ -18,11 +18,12 @@ foreach (file ${helloworld_SRC})
     endif()
 endforeach()
 
-add_executable(game ${helloworld_SRC})
+add_executable(network ${helloworld_SRC})
 
 
-# target_link_libraries(game sfml-graphics sfml-window sfml-system sfml-network sfml-audio opengl32 winmm gdi32)
-target_link_libraries(game -lws2_32)
+if (WIN32)
+    target_link_libraries(network -lws2_32)
+endif()
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

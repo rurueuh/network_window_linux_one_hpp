@@ -1,5 +1,13 @@
 #include <iostream>
-#include <winsock2.h>
 #include <string>
 #include <vector>
-#pragma comment(lib, "ws2_32.lib")
+#include <cstddef>
+
+#ifdef WIN32
+    #include <winsock2.h>
+    #pragma comment(lib, "ws2_32.lib")
+#else
+    #include <sys/socket.h>
+    #include <arpa/inet.h>
+    #include <unistd.h>
+#endif
