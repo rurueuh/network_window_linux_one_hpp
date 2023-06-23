@@ -1,5 +1,5 @@
 #include "main.hpp"
-#include "Ruru/Network.hpp"
+#include "../Net.hpp"
 
 void test_listener(void)
 {
@@ -22,6 +22,7 @@ void test_connexion(void)
 
 int main() 
 {
+    Ruru::Socket::setDebugMode(true);
     try {
         test_listener();
         test_connexion();

@@ -14,9 +14,11 @@
 #include <unistd.h>
 #endif
 
-constexpr auto PORT = 4242;
-constexpr auto IP = "127.0.0.1";
-constexpr auto TIMEOUT = 10;
+namespace Ruru {
+	constexpr auto PORT = 4242;
+	constexpr auto IP = "127.0.0.1";
+	constexpr auto TIMEOUT = 10;
+};
 
 namespace Ruru {
 	class Socket final {
@@ -70,11 +72,15 @@ namespace Ruru {
 				if (::send(_clientSocket, dup.c_str(), dup.length(), 0) == -1) {
 					throw std::runtime_error("Error send : Socket error.");
 				}
+				if (_debugMode)
+					std::cout << "DEBUG RURU SEND : " << dup;
 				return;
 			}
 			if (::send(_clientSocket, message.c_str(), message.length(), 0) == -1) {
 				throw std::runtime_error("Error send : Socket error.");
 			}
+			if (_debugMode)
+				std::cout << "DEBUG RURU SEND : " << message;
 
 		}
 		bool isTimeout() const
@@ -121,7 +127,7 @@ namespace Ruru {
 				}
 				else {
 					if (_debugMode == true) {
-						std::cout << "DEBUG RURU : " << std::string(buff.begin(), buff.end()) << std::endl;
+						std::cout << "DEBUG RURU RCV : " << std::string(buff.begin(), buff.end()) << std::endl;
 					}
 					rcvData.insert(rcvData.end(), buff.begin(), buff.begin() + readLen);
 					if (rcvData.back() == '\n') {
@@ -241,5 +247,6 @@ namespace Ruru {
 		sockaddr_in _serverAddress;
 	};
 };
+
 inline bool Ruru::Socket::_debugMode = false;
 inline bool Ruru::Socket::_ignoreWarning = false;

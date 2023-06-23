@@ -14,11 +14,12 @@
     #include <unistd.h>
 #endif
 
-constexpr auto PORT = 4242;
-constexpr auto IP = "127.0.0.1";
-constexpr auto TIMEOUT = 10;
 
 namespace Ruru {
+	constexpr auto PORT = 4242;
+	constexpr auto IP = "127.0.0.1";
+	constexpr auto TIMEOUT = 10;
+
 	class Socket final {
 	public:
 		Socket(const char *ip = IP, int port = PORT);

@@ -67,12 +67,15 @@ void Ruru::Socket::send(const std::string& message)
         if (::send(_clientSocket, dup.c_str(), dup.length(), 0) == -1) {
             throw std::runtime_error("Error send : Socket error.");
         }
+        if (_debugMode)
+            std::cout << "DEBUG RURU SEND : " << dup;
         return;
     }
     if (::send(_clientSocket, message.c_str(), message.length(), 0) == -1) {
         throw std::runtime_error("Error send : Socket error.");
     }
-
+    if (_debugMode)
+        std::cout << "DEBUG RURU SEND : " << message;
 }
 
 bool Ruru::Socket::isTimeout() const
@@ -114,7 +117,7 @@ std::string Ruru::Socket::receive()
             throw std::runtime_error("Error read : get Disconnected by host");
         } else {
             if (_debugMode == true) {
-                std::cout << "DEBUG RURU : " << std::string(buff.begin(), buff.end()) << std::endl;
+                std::cout << "DEBUG RURU RCV : " << std::string(buff.begin(), buff.end()) << std::endl;
             }
             rcvData.insert(rcvData.end(), buff.begin(), buff.begin() + readLen);
             if (rcvData.back() == '\n') {
