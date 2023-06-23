@@ -2,13 +2,15 @@
 
 Ruru::Listener::Listener(const int port)
 {
-    #ifndef WIN32
-        _serverSocket = socket(AF_INET, SOCK_STREAM, 0);
-        if (_serverSocket == -1) {
-            throw std::runtime_error("Error init : Socket.");
-        }
-    #else
+    #ifdef WIN32
+        if (WSAStartup(MAKEWORD(2, 2), &_wsaData) != 0) {
+			throw std::runtime_error("Error init : WSAStartup.");
+		}
     #endif
+    _serverSocket = socket(AF_INET, SOCK_STREAM, 0);
+    if (_serverSocket == -1) {
+        throw std::runtime_error("Error init : Socket.");
+    }
     _serverAddress.sin_family = AF_INET;
     _serverAddress.sin_port = htons(static_cast<u_short>(port));
     _serverAddress.sin_addr.s_addr = inet_addr(IP);

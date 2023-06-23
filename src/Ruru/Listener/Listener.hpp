@@ -14,6 +14,8 @@ namespace Ruru {
             #ifndef WIN32
                 int _serverSocket;
             #else
+                WSADATA _wsaData;
+                SOCKET _serverSocket;
             #endif
             sockaddr_in _serverAddress;
     };
