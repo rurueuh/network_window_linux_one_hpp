@@ -25,6 +25,8 @@ Ruru::Listener::~Listener()
     #ifndef WIN32
         close(_serverSocket);
     #else
+        closesocket(_serverSocket);
+		WSACleanup();
     #endif
 }
 
